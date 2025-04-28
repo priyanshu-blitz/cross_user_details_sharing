@@ -88,22 +88,6 @@ We are making the checkout process **faster**, **smoother**, and **more convenie
 
 ---
 
-graph TD
-    A[User Visits Shopdeck Site] --> B[Fill Checkout Form]
-    B --> C{Validate Input}
-    C -->|Valid| D[No Action]
-    C -->|Invalid| E[Debounce: 1s]
-    E --> F[Send to Backend]
-    F --> G[Store Cookie at web.shopdeck.com]
-    G -->|Field Updated| C
-    G --> H[Later...]
-    H --> I[Visit Another Shopdeck Site]
-    I --> J{Fetch User Data}
-    J -->|Data Found| K[Prefill Form]
-    J -->|No Data| L[Manual Fill]
-
-    %% Styling for better readability
-    classDef process fill:#e6f3ff,stroke:#0066cc,stroke-width:2px;
     classDef decision fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
     class A,B,D,E,F,G,H,I,K,L process;
     class C,J decision;
