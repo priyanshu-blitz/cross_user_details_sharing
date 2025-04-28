@@ -98,7 +98,7 @@ This table is used to store user details when the user fills in a form field and
 
 ### What data is stored?
 - **Common Fields:**
-  - `C0` (Common to all events) - This identifier ensures that the data is consistent across different events and actions.
+  - `C0` (Common to all events)
 - **User Details Fields:**
   - `user_detail_type` (e.g., `mobile_number`, `road_name`, `pincode`) – The type of user detail that was filled in.
   - The table stores validated user details like mobile number, road name, or pincode once the user has successfully entered the information.
@@ -115,7 +115,7 @@ This table helps us quickly check if a user has already provided data on any Sho
 
 ### What data is stored?
 - **Common Fields:**
-  - `C0` (Common to all events) - Identifies and links events related to the same user.
+  - `C0` (Common to all events)
 - **User Details Fields:**
   - `user_detail_type` (e.g., `mobile_number`, `road_name`, `pincode`) – Specifies the type of user detail being checked.
   - This table contains the user’s validated details that were previously stored.
