@@ -90,6 +90,4 @@ We are making the checkout process **faster**, **smoother**, and **more convenie
 
 ![Cross Domain Flowchart](https://www.mermaidchart.com/raw/abde1c9a-2ef0-4dbe-b267-4b56ce719c9b?theme=light&version=v0.1&format=svg)
 
-    classDef decision fill:#ffe6cc,stroke:#ff9900,stroke-width:2px;
-    class A,B,D,E,F,G,H,I,K,L process;
-    class C,J decision;
+    
