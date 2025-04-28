@@ -88,6 +88,66 @@ We are making the checkout process **faster**, **smoother**, and **more convenie
 
 ---
 
+# Data Storage for Tracking and Analysis
+
+To ensure a seamless user experience and track user details across different Shopdeck merchant websites, we’ve implemented two key tables for storing and managing user data.
+
+## 1. `Sd_sso_user_details_assigned`
+
+This table is used to store user details when the user fills in a form field and the input passes the validation criteria.
+
+### What data is stored?
+- **Common Fields:**
+  - `C0` (Common to all events) - This identifier ensures that the data is consistent across different events and actions.
+- **User Details Fields:**
+  - `user_detail_type` (e.g., `mobile_number`, `road_name`, `pincode`) – The type of user detail that was filled in.
+  - The table stores validated user details like mobile number, road name, or pincode once the user has successfully entered the information.
+
+### When does data get stored?
+- Data is saved in this table when the user successfully enters information into a field, and the input is validated (e.g., a valid 10-digit mobile number, a correctly formatted road name, etc.).
+- Each time a valid user detail is entered, it is captured and stored for future reference.
+
+---
+
+## 2. `Sd_sso_user_details_exists`
+
+This table helps us quickly check if a user has already provided data on any Shopdeck merchant website. When a user lands on a new website and starts the checkout process, we check this table to see if the user’s details are already available in our common domain.
+
+### What data is stored?
+- **Common Fields:**
+  - `C0` (Common to all events) - Identifies and links events related to the same user.
+- **User Details Fields:**
+  - `user_detail_type` (e.g., `mobile_number`, `road_name`, `pincode`) – Specifies the type of user detail being checked.
+  - This table contains the user’s validated details that were previously stored.
+
+### When does this data get triggered?
+- This table is queried when a user visits a new Shopdeck merchant website and starts the checkout journey.
+- If we find that the user has previously filled in their details on another Shopdeck merchant website (stored in the common domain), the details are fetched and prefilled into the checkout form for that user.
+
+---
+
+## Summary of Tables and Data Flow
+
+| **Table**                        | **Trigger**                                                        | **Stored Data**                                                 |
+|-----------------------------------|--------------------------------------------------------------------|-----------------------------------------------------------------|
+| `Sd_sso_user_details_assigned`    | When the user enters and validates a field in the checkout form.  | User details: `mobile_number`, `road_name`, `pincode` (Validated) |
+| `Sd_sso_user_details_exists`      | When the user lands on a checkout page and has previously filled data. | Fetched user details from common domain: `mobile_number`, `road_name`, `pincode` |
+
+---
+
+## Purpose and Benefits:
+- **Cross-Site User Experience**: This data storage system allows us to prefill user details across various Shopdeck merchant websites, providing a seamless checkout experience for returning customers.
+- **Faster Checkout Process**: By tracking and storing validated user details, we reduce the need for customers to re-enter the same information multiple times, resulting in quicker checkouts.
+- **Data Consistency**: These tables ensure that user details are consistently stored and updated, preventing discrepancies across multiple websites.
+
+---
+
+This system of storing and retrieving user data not only improves the checkout flow but also enhances tracking and analysis of user behavior, helping us optimize the user experience over time.
+
+---
+
 ![Cross Domain Flowchart](./cross_domain_flow_digram.png)
+
+
 
     
