@@ -88,6 +88,6 @@ We are making the checkout process **faster**, **smoother**, and **more convenie
 
 ---
 
-![Cross Domain Flowchart](https://www.mermaidchart.com/raw/abde1c9a-2ef0-4dbe-b267-4b56ce719c9b?theme=light&version=v0.1&format=svg)
+![Cross Domain Flowchart](./cross_domain_flow_digram.png)
 
     
