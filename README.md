@@ -87,3 +87,30 @@ In simple terms:
 We are making the checkout process **faster**, **smoother**, and **more convenient** for returning customers — even if they are visiting a Shopdeck store for the first time — by smartly using the power of **cross-domain user data sharing**.
 
 ---
+
+[User visits any Shopdeck Merchant Website]
+                 ↓
+  [User starts filling checkout form]
+                 ↓
+        [Validate Field Input]
+           /            \
+          /              \
+     [Invalid]         [Valid Input]
+     (Do Nothing)          ↓
+                      [Debounce: 1 sec]
+                            ↓
+                  [Send data to Backend Service]
+                            ↓
+                  [Store Data as Cookie at web.shopdeck.com]
+                            ↓
+                  [If User updates Field → Repeat Validation, Debounce, Store]
+
+Later...
+
+[User visits another Shopdeck Merchant Website]
+                 ↓
+       [Fetch User Data from Central Domain]
+           /                      \
+    [Data Found]                [No Data Found]
+       ↓                            ↓
+[Prefill Checkout]        [User fills manually]
